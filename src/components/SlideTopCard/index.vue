@@ -1,5 +1,7 @@
+<!-- 上滑封面 -->
 <template>
   <div
+    v-if="hide"
     ref="SlideTopCard"
     class="slide-top-card"
     :style="{
@@ -19,11 +21,12 @@
         startPosY: 0,
         endPosY: 0,
         dis: 0,
-        animateClass: false
+        animateClass: false,
+        hide: false
       }
     },
     mounted() {
-      if (document.body.clientHeight > 800) {
+      if (window.innerWidth > 800) {
         this.addMouseSlide()
       } else {
         this.addTouchSlide()
@@ -32,6 +35,9 @@
     methods: {
       addMouseSlide() {
         const dom = this.$refs.SlideTopCard
+        if (!dom) {
+          return
+        }
         dom.addEventListener('mousedown', this.mouseDown)
       },
       mouseDown(e) {
@@ -52,6 +58,9 @@
       },
       addTouchSlide() {
         const dom = this.$refs.SlideTopCard
+        if (!dom) {
+          return
+        }
         dom.addEventListener('touchstart', this.touchStart)
         dom.addEventListener('touchmove', this.touchMove)
         dom.addEventListener('touchend', this.touchEnd)
@@ -68,7 +77,8 @@
       },
       touchEnd() {
         this.animateClass = true
-        const pageHeight = document.body.clientHeight
+        const pageHeight = window.innerHeight
+        console.log(74, this.dis, pageHeight)
         if (this.dis > pageHeight / 2) {
           this.slideToTop()
         } else {
@@ -81,10 +91,13 @@
         this.dis = 0
       },
       slideToTop() {
-        const pageHeight = document.body.clientHeight
+        const pageHeight = window.innerHeight
         this.startPosY = 0
         this.endPosY = 0
         this.dis = pageHeight
+        setTimeout(() => {
+          this.hide = false          
+        }, 1000);
       }
     }
   }
@@ -98,6 +111,10 @@
     box-sizing: border-box;
     font-size: 16rem;
     position: relative;
+    cursor: grab;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .slide-tips {
     position: absolute;
@@ -105,5 +122,6 @@
     bottom: 20%;
     transform: translateX(-50%);
     font-size: 12rem;
+    color: #FFF;
   }
 </style>

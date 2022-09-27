@@ -5,9 +5,12 @@
 html {
   font-size: 0.2666vw; // 375px / 100vw / 100
   background-color: rgba(0, 0, 0, 0.85);
+  height: 100%;
 }
 body {
   background-color: #fff;
+  height: 100%;
+  font-size: 16rem;
 }
 
 @media screen and (min-width: 750px) {
