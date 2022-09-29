@@ -9,7 +9,7 @@
         transitionDuration: `${duration}s`
       }"
     >
-    <div class="pointer" @click="start(getRandom(0, 2))"></div>
+    <div class="pointer" @click="start()"></div>
   </div>
 </template>
 <script>
@@ -54,8 +54,8 @@ export default {
     }
   },
   methods: {
-    getRandom,
     start(resultIndex) {
+      resultIndex = getRandom(0, 2) // 随机一个答案 
       if (this.runnig) {
         alert('别急，抽奖中')
         return
