@@ -1,6 +1,6 @@
 <template>
   <div>
-    结果页面
+    答题成功，请抽奖
     <Turntable></Turntable>
   </div>
 </template>

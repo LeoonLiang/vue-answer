@@ -22,7 +22,7 @@
         endPosY: 0,
         dis: 0,
         animateClass: false,
-        hide: false
+        hide: true
       }
     },
     mounted() {
@@ -95,6 +95,7 @@
         this.startPosY = 0
         this.endPosY = 0
         this.dis = pageHeight
+        
         setTimeout(() => {
           this.hide = false          
         }, 1000);
@@ -115,6 +116,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 99;
   }
   .slide-tips {
     position: absolute;

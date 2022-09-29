@@ -1,25 +1,28 @@
 <template>
   <div id="app">
+    <SlideTopCard />
     <Question
       v-if="current === 1"
       @end="hanledEnd"
-    ></Question>
-    <ResultPage v-if="current === 0"></ResultPage>
+    />
+    <ResultPage v-if="current === 2"/>
   </div>
 </template>
 
 <script>
 import Question from '@/components/QuestionList'
 import ResultPage from '@/components/ResultPage'
+import SlideTopCard from '@/components/SlideTopCard'
 export default {
   name: 'App',
   components: {
     Question,
-    ResultPage
+    ResultPage,
+    SlideTopCard
   },
   data() {
     return {
-      current: 0
+      current: 1
     }
   },
   methods: {
