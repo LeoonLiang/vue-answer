@@ -4,7 +4,7 @@ module.exports = defineConfig({
   pages: {
     index: {
       entry: 'src/main.js',
-      title: '凤凰秀-答题'
+      title: '测试-答题'
     }
   }
 })
